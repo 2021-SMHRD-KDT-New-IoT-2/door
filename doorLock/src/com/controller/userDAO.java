@@ -104,7 +104,7 @@ public int join(String customer_id, String customer_pw,
 				String get_email = rs.getString(7);
 				
 				
-				vo = new userVO(get_email, get_pw, get_name, get_r_num,get_sex,get_phone,get_email);
+				vo = new userVO(get_id, get_pw, get_name, get_r_num,get_sex,get_phone,get_email);
 			}
 			else{
 				System.out.println("로그인실패!!!");

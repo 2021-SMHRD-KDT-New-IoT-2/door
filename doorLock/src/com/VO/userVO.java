@@ -20,6 +20,12 @@ public class userVO {
 		this.customer_phone = customer_phone;
 		this.customer_email = customer_email;
 	}
+	public userVO() {
+		
+	}
+	
+	
+	
 	public String getCustomer_id() {
 		return customer_id;
 	}

@@ -23,7 +23,7 @@ public class login extends HttpServlet {
 		userVO vo = dao.login(customer_id, customer_pw);
 		if(vo!=null) {
 			HttpSession session= request.getSession();
-			session.setAttribute("member", vo);
+			session.setAttribute("user", vo);
 			response.sendRedirect("main.jsp");	
 		
 		}else {
@@ -31,7 +31,7 @@ public class login extends HttpServlet {
 			
 			//response.sendRedirect("main.jsp");	
 		}
-		
+		System.out.println(vo.getCustomer_id());
 	
 	}
 

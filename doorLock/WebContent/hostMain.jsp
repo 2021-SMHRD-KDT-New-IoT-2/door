@@ -18,7 +18,10 @@
 
   
   }
-  
+  body{
+    margin: auto;
+  }
+
   h1 {
     font-size: 130px;
     font-weight: 200;
@@ -41,22 +44,17 @@
     font-weight: bold;
   }
 
-  /* --- */
-  
-  .result{
-    font-size: 0px;
-  }
-
+  /* 배경화면 */
   .intro_bg{
     background-image: url(image/leave.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    background: radial-gradient(rgb(255, 255, 255));
-    width: 100%;
-    height: 1000px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    /* background-attachment: fixed; */
+    background: radial-gradient(rgb(114, 108, 108));
+    height: 1500px;
   }
   
   .header{
@@ -70,18 +68,17 @@
   .nav{
     display: flex;
     justify-content: flex-end;
-    width:calc(1280px - 300px);
+    width:100%;
     line-height: 86px;
-    margin-left: 1900px;
   }
 
   .nav > li {
-    margin-left:150px;
+    margin-right:200px;
   }
   
   .nav > li > a {
     color: rgb(0, 0, 0);
-    font-size: 30px;
+    font-size: 35px;
     
   }
   
@@ -93,15 +90,14 @@
     
     background: rgba(226, 206, 189, 0);
     border-radius: 5px;
-    margin-top:500px;
-    margin-left: 23%;
+    margin: auto;
   }
   .searchArea > form > input{
     margin-top: 40px;
     border: 5px;
     border-color: black;
     width:100%;
-    height:80px;
+    height:50%;
     
     background: rgba(238, 146, 92, 0.741);
     color:#fff;
@@ -115,97 +111,65 @@
     color:#fff;
   }
 /*------검색-------*/
-
-
-  .amount{
-    position: relative;
-    top:-66px;
-    display: flex;
-    width:1280px;
-    background: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: auto;
-  }
-  .amount > li {
-    flex: 1;
-    height: 132px;
-  }
-  .amount > li > div {
-    text-align: center;
-    margin-top:37px;
-    height:57px;
-  }
   
-  .amount > li:not(:last-child) > div{
-    border-right:1px solid #E1E1E1;
-  }
   .intro_text{
     width:100%;
     margin:231px auto 231px auto;
     text-align: center;
   }
 
-  .intro_text h2{
-    color: rgba(92, 90, 90, 0.823);
+  .intro_text > h2{
+    margin-top: 400px;
+    font-size: 80px;
+    color: rgb(155, 155, 155);
   }
 
 
   .intro_text > h1{
+    margin-top: 30px;
+    font-size: 170px;
+    font-family:'Times New Roman', Times, serif;
     color: rgb(255, 255, 255);
   }
   .intro_text > h4{
     color:#fff;
   }
   
-  /* main_text0 */
   
-  .main_text0{
+  /* --------숙소 아이콘 ----------*/
+  .section{
+    margin: auto;
     width: 100%;
-    height:601px;
-    margin-bottom:-100px;
-    background: #f7f7f7;
+    height: 500px;
   }
-  .main_text0 > h1{
-    padding-top:116px;
-    text-align: center;
-  }
-  .main_text0 > .contents1 {
-    text-align: center;
-  }
-  
+
+
   .icons{
     display: flex;
-    width:1500px;
-    height: 302px;
+    justify-content: center;
+    width:50%;
+    height: 502px;
     /* background: orange; */
     margin:auto;
   }
   .icons > li {
     flex: 1;
-    background: rgba(255, 255, 255, 0);
-    margin-top:350px;
-    height:330px;
+    background: rgba(65, 65, 65, 0);
+    margin-top:100px;
+    height:830px;
     text-align: center;
+    
   }
+  
   .icons > li > .icon_img{
     margin-top:18px;
   }
   
   .icons > li:not(:last-child){
-    margin-right: 20px;
+     margin-right: 100px;
   }
   
-  .icons .contents2 {
-    width:280px;
-    margin:auto;
-    letter-spacing: -1px;
-  }
-  .button{
-      font-size: 25px;
-      color: #80acf3;
-  }
-
-  .nav a:hover{
+   .nav a:hover{
     color: #1fdfdf;
   }
 
@@ -214,37 +178,51 @@ a:hover{
 }
 
   .more{
-    width:200px;
+    width:250px;
     height: 50px;
     background: #e4b06d6b;
     color: rgb(0, 0, 0);
     font-size: 25px;
-    line-height: 30px;
+    line-height: 50px;
     margin:25px auto;
     border: 0px;
   }
+  /* --------숙소 아이콘 ----------*/
   
   /* main_text1 호텔 추천하는 곳*/
   
+.section2{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
   .main_text1{
-    margin-left: 15%;
+    margin:auto;
+    
+
     width: 100%;
-    height:659px;
     margin-top: 100px;
     /* background: #2F7AF4 */
   }
-  .main_text1 > h2{
+  .section2 > h2{
     padding-top:100px;
     margin-bottom: -30px;
-    text-align: left;
   }
-  .main_text1 > .contents1 {
+  .main_text1 >h2 {
+    width: 100%;
     text-align: center;
+    margin-top: 150px;
+    margin-bottom: -30px;
   }
+
+  
+  /* section2에 추천 게시판 */
+
   .service {
-    width:100%;
+    justify-content: center;
     display: flex;
-    margin: 49px auto;
+    margin: 60px auto;
     height:427px;
     text-align: center;
     font-size: 25px;
@@ -252,7 +230,7 @@ a:hover{
   }
   
   .service > .contents2 {
-    padding: 0px;
+
     margin-left: 25px;
     
   }
@@ -267,57 +245,24 @@ a:hover{
   }
 
 
-  
-  /* main_text2 */
-  .main_text2 {
-    width:100%;
-    height:500px;
-    background-image: url("image/contact.png");
-  }
-  
-  .main_text2 > ul {
-    display: flex;
-    padding-top:138px;
-  }
-  
-  .main_text2 > ul > li {
-    flex: 1;
-    text-align: center;
-  }
-  .main_text2 > ul > li > div,
-  .main_text2 > ul > li > div > h1{
-    color: #fff;
-  }
-  .more2{
-    width:220px;
-    height:40px;
-    border: 1px solid #fff;
-    color: rgb(0, 0, 0);
-    line-height: 40px;
-    cursor: pointer;
-    margin:16px auto;
-  }
-  .more2 a{
-      color: white;
-  }
-
+    /* 맨 밑에 바닥 부분 */
   .footer{
     display: flex;
-    background: #9aecea;
+    background: rgba(255, 166, 0, 0.692);
+    margin-top: 150px;
     padding:30px;
+    
   }
-  .footer > div:first-child {
+  .footer > a {
+    font-size: 30px;
     flex:3;
     text-align: center;
-    color: rgb(0, 0, 0);
-  }
-  .footer > div:last-child {
-    flex:9;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
   }
 
+
   /* 방문 후기 게시판 테이블 설정 */
-  table{
+  /*table{
   width:100%;
   border-collapse: collapse;
   line-height: 24px;
@@ -339,20 +284,7 @@ a{
 }
 a:hover{
     text-decoration: underline;
-}
-
-.under{
-  width: 2600px;
-  height: 90px;
-  background-color: rgb(242, 131, 72);
-  margin-top: 100px;
-  text-align: center;
-}
-.under > a{
-font-size: 30px;
-color: white;
-}
-
+}*/
 </style>
  <style type="text/css">
         .intro_text>h2 {
@@ -379,17 +311,16 @@ color: white;
             <div class="header">
                 <ul class="nav">
                  
-                    <li><a href="#">HOME</a></li>
+                    
                     <%if(vo1==null){%>
-					<li><a href="join.jsp">로그인/회원가입(일반)</a></li>
-					<li><a href="hostJoin.jsp">로그인/회원가입(업체)</a></li>
+					<li><a href="join.jsp">SignIn/Register</a></li>
+					<li><a href="hostJoin.jsp">Manager SignIn</a></li>
 			    	 <%}%>
 							
 				 	<%if(!(vo1==null)){%>
 					
-					<li><a href="#">예약현황보기</a></li>
-					<li><a href="#">고객관리</a></li>
-					<li><a href="#">숙소찾기</a></li>
+					<li><a href="MGR_Reservation_Inform.jsp">Reservation status</a></li>
+					<li><a href="#">Customer Service</a></li>
 					 <%}%>
                     
                    

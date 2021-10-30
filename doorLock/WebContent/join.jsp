@@ -118,7 +118,7 @@ span {
                 <img src="image/gl.png" alt="google">
             </div>
             <form id="login" action="login" class="input-group">
-                    <input type="text" name = "customer_id" class="input-field" placeholder="User name or Email" required>
+                    <input type="text" name = "customer_id" class="input-field" placeholder="User id" required>
                     <input type="password"  name = "customer_pw" class="input-field" placeholder="Enter Password" required>
                     <input type="checkbox" class="checkbox"><span>Remember Password</span>
                     <button class="submit" onclick="location.href='main.jsp'">로그인</button>
@@ -132,7 +132,7 @@ span {
                 <input type="text" name ="customer_phone" class="input-field" placeholder="phone_number" required><br><br>
                 
                 <input type="radio" name="gender" value="1">male
-                <input type="radio" name="gender" value="2">female <br>
+                <input type="radio" name="gender" value="0">female <br>
                 <input type="checkbox" class="checkbox"><span>약관 확인</span>
                 <button class="submit" onclick="location.href='main.jsp'">가입하기</button>
                 
