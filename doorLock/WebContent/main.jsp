@@ -356,7 +356,7 @@ a:hover{
                 <div class="backpicture">
                     <img src="image/ho1.JPG" width="630px" height="400px"><br>
                     <a
-                        href="#">산토리니
+                        href="Santorini.jsp">산토리니
                         300,000원 부터 ~ </a>
                 </div>
 
