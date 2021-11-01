@@ -7,7 +7,7 @@
 <meta charset="EUC-KR">
 <title>저기어때</title>
 <style>
-	*{
+*{
     font-family: 'Noto Sans KR', sans-serif;
     list-style: none;
     text-decoration: none;
@@ -136,7 +136,7 @@
   }
   
   
-  /* ------- ----------*/
+  /* --------숙소 아이콘 ----------*/
   .section{
     margin: auto;
     width: 100%;
@@ -187,9 +187,9 @@ a:hover{
     margin:25px auto;
     border: 0px;
   }
-  /* ----------------*/
+  /* --------숙소 아이콘 ----------*/
   
-  /* main_text1 */
+  /* main_text1 호텔 추천하는 곳*/
   
 .section2{
   width: 100%;
@@ -217,7 +217,7 @@ a:hover{
   }
 
   
-  /* section2*/
+  /* section2에 추천 게시판 */
 
   .service {
     justify-content: center;
@@ -260,115 +260,86 @@ a:hover{
     color: rgb(255, 255, 255);
   }
 
+  .intro_text>h2 {
+    font-size: 45px;
+    font-family: "sans-serif";
+    font-weight: normal;
+}
 
-  /* 방문 후기 게시판 테이블 설정 */
-  /*table{
-  width:100%;
-  border-collapse: collapse;
-  line-height: 24px;
-  }
-  table td,th {
-    border-top:1px solid black;
-    border-bottom:1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-    padding: 10px;
-    font-size: 20px;
-}
-th {
-	background: rgb(219, 236, 238);
-}
-a{
-    text-decoration: none;
-    color: black;
-}
-a:hover{
-    text-decoration: underline;
-}*/
     </style>
 
 </head>
 <body>
-   <%
-		
-   userVO vo = (userVO)session.getAttribute("user");
-   
-		
-%>
-	
-   
-   
-    <div class="back">
-        <div class="intro_bg">
+    <%	
+    userVO vo = (userVO)session.getAttribute("user");	
+ %>
+    <div class="intro_bg">
+        <div class="header">
+            <ul class="nav">
 
-            <div class="header">
-                <ul class="nav">
-                 
-                   
-                    <%if(vo==null){%>
-					 <li><a href="#">HOME</a></li>
-					<li><a href="join.jsp">SignIn/Register</a></li>
-					<li><a href="hostJoin.jsp">Manager SignIn</a></li>
+                <%if(vo==null){%>
+                <li><a href="#">HOME</a></li>
+                <li><a href="join.jsp">SignIn/Register</a></li>
+                <li><a href="hostJoin.jsp">Manager SignIn</a></li>
 			    	 <%}%>
-							
-				 	<%if(!(vo==null)){%>
-					
-					<li><a href="#">Reservation</a></li>
-					<li><a href="UserReservation.jsp">reservation confirm</a></li>
-					<li><a href="#">My information</a></li>
-					
-					 <%}%>
-                    
-                   
-                  	
-                </ul>
-            </div>
-            <div class="intro_text">
-                <h2>너가 찾는 숙소? 여기 다있어!!</h2>
-                <h1>저기 어때?</h1>
-            </div>
-            <ul class="icons">
-                <li>
-                    <div class="icon_img">
-                        <img src="image/dok.png" width="200px" height="200px">
-                    </div>
 
-                    <div class="contents1_bold">
-                        <button class="more "> <a href="#"> 독채 보기</a></button>
-                    </div>
-                </li>
-                <li>
-
-                    <div class="icon_img">
-                        <img src="image/jib.png" width="200px" height="200px">
-                    </div>
-
-                    <div class="contents1_bold">
-                        <button class="more"> <a href="#"> 호텔 보기</a></button>
-                    </div>
-
-                </li>
-
-                <li>
-                    <div class="icon_img">
-                        <img src="image/house.png" width="200px" height="200px">
-                    </div>
-                    <div class="contents1_bold">
-                        <button class="more"> <a href="#"> 게스트하우스 보기</a></button>
-                    </div>
-
-                </li>
-
-                <li>
-                    <div class="icon_img">
-                        <img src="image/full.png" width="200px" height="200px">
-                    </div>
-                    <div class="contents1_bold">
-                        <button class="more"> <a href="#"> 풀빌라 보기 </a></button>
-                    </div>
-                </li>
+                     <%if(!(vo==null)){%>
+                        <li><a href="#">Reservation</a></li>
+                        <li><a href="UserReservation.jsp">reservation confirm</a></li>
+                        <li><a href="#">My information</a></li>
+                        
+                         <%}%>
             </ul>
+
         </div>
+        <div class="intro_text">
+            <h2>네가 찾는 숙소? 여기 다있어!!</h2>
+            <h1>저기 어때?</h1>
+        </div>
+    </div>
+
+    <div class="section">
+        <ul class="icons">
+            <li>
+                <div class="icon_img">
+                    <img src="image/dok.png" width="250px" height="250px">
+                </div>
+
+                <div class="contents1_bold">
+                    <button class="more "> <a href="#"> 독채 보기</a></button>
+                </div>
+            </li>
+            <li>
+
+                <div class="icon_img">
+                    <img src="image/jib.png" width="250px" height="250px">
+                </div>
+
+                <div class="contents1_bold">
+                    <button class="more"> <a href="#"> 호텔 보기</a></button>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="icon_img">
+                    <img src="image/house.png" width="250px" height="250px">
+                </div>
+                <div class="contents1_bold">
+                    <button class="more"> <a href="#"> 게스트하우스 보기</a></button>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="icon_img">
+                    <img src="image/full.png" width="250px" height="250px">
+                </div>
+                <div class="contents1_bold">
+                    <button class="more"> <a href="#"> 풀빌라 보기 </a></button>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="searchArea">
@@ -378,75 +349,81 @@ a:hover{
         </form>
     </div>
 
+    <div class="section2">
+        <div class="main_text1">
+            <h2>호텔 추천</h2>
+            <div class="service">
+                <div class="backpicture">
+                    <img src="image/ho1.JPG" width="630px" height="400px"><br>
+                    <a
+                        href="#">산토리니
+                        300,000원 부터 ~ </a>
+                </div>
 
-    <div class="main_text1">
-        <h2>호텔 추천</h2>
-        <div class="service">
-            <div class="backpicture">
-                <img src="image/ho1.JPG" width="630px" height="400px"><br>
-                <a href="http://127.0.0.1:5500/web%20%ED%8C%8C%EC%9D%BC%EB%AA%A8%EC%9D%8C/%ED%8E%9C%EC%85%98%EB%A9%94%EC%9D%B8.html">산토리니 300,000원 부터 ~ </a>
+                <div class="contents2">
+                    <img src="image/ho2.jpg" width="630px" height="400px"><br>
+                    <a href="#">하노이호텔 230,000원 부터 ~ </a>
+                </div>
+
+                <div class="contents2">
+                    <img src="image/ho3.jpg" width="630px" height="400px"><br>
+                    <a href="#">광주스테이 250,000원 부터 ~ </a>
+                </div>
+
+                <div class="contents2">
+                    <img src="image/ho4.jpg" width="630px" height="400px"><br>
+                    <a href="#">아누아호텔 170,000원 부터 ~ </a>
+                </div>
             </div>
 
-            <div class="contents2">
-                <img src="image/ho2.jpg" width="630px" height="400px"><br>
-                <a href="#">하노이호텔 230,000원 부터 ~ </a>
+            <h2>게스트 하우스 추천</h2>
+            <div class="service">
+                <div class="backpicture">
+                    <img src="image/ge1.jpg" width="630px" height="400px"><br>
+                    <a href="#">지리산 옹달셈펜션 15,000원 부터 ~ </a>
+                </div>
+                <div class="contents2">
+                    <img src="image/ge2.jpg" width="630px" height="400px"><br>
+                    <a href="#">풍남옥 게스트하우스 25,000원 부터 ~ </a>
+                </div>
+
+                <div class="contents2">
+                    <img src="image/ge3.jpg" width="630px" height="400px"><br>
+                    <a href="#">쉼터 게스트하우스 20,000원 부터 ~ </a>
+                </div>
+
+                <div class="contents2">
+                    <img src="image/ge4.jpg" width="630px" height="400px"><br>
+                    <a href="#">쉐어 게스트하우스 17,000원 부터 ~ </a>
+                </div>
             </div>
 
-            <div class="contents2">
-                <img src="image/ho3.jpg" width="630px" height="400px"><br>
-                <a href="#">광주스테이 250,000원 부터 ~ </a>
-            </div>
+            <h2>풀빌라 추천</h2>
+            <div class="service">
+                <div class="backpicture">
+                    <img src="image/full1.jpg" width="630px" height="400px"><br>
+                    <a href="#">아쿠아밸리 150,000원 부터 ~ </a>
+                </div>
+                <div class="contents2">
+                    <img src="image/full2.jpg" width="630px" height="400px"><br>
+                    <a href="#">풀빌라온펜션 110,000원 부터 ~ </a>
+                </div>
 
-            <div class="contents2">
-                <img src="image/ho4.jpg" width="630px" height="400px"><br>
-                <a href="#">아누아호텔 170,000원 부터 ~ </a>
+                <div class="contents2">
+                    <img src="image/full3.png" width="630px" height="400px"><br>
+                    <a href="#">리버하임풀빌라 99,000원 부터 ~ </a>
+                </div>
+
+                <div class="contents2">
+                    <img src="image/full4.png" width="630px" height="400px"><br>
+                    <a href="#">힐앤폴 199,000원 부터 ~ </a>
+                </div>
             </div>
         </div>
-
-        <h2>게스트 하우스 추천</h2>
-        <div class="service">
-            <div class="backpicture">
-                <img src="image/ge1.jpg" width="630px" height="400px"><br>
-                <a href="#">하늘 게스트하우스 15,000원 부터 ~ </a>
-            </div>
-            <div class="contents2">
-                <img src="image/ge2.jpg" width="630px" height="400px"><br>
-                <a href="#">풍남옥 게스트하우스 25,000원 부터 ~ </a>
-            </div>
-
-            <div class="contents2">
-                <img src="image/ge3.jpg" width="630px" height="400px"><br>
-                <a href="#">쉼터 게스트하우스 20,000원 부터 ~ </a>
-            </div>
-
-            <div class="contents2">
-                <img src="image/ge4.jpg" width="630px" height="400px"><br>
-                <a href="#">쉐어 게스트하우스 17,000원 부터 ~ </a>
-            </div>
-        </div>
-        
-        <h2>풀빌라 추천</h2>
-        <div class="service">
-            <div class="backpicture">
-                <img src="image/full1.jpg" width="630px" height="400px"><br>
-                <a href="#">아쿠아밸리 150,000원 부터 ~ </a>
-            </div>
-            <div class="contents2">
-                <img src="image/full2.jpg" width="630px" height="400px"><br>
-                <a href="#">풀빌라온펜션 110,000원 부터 ~ </a>
-            </div>
-
-            <div class="contents2">
-                <img src="image/full3.png" width="630px" height="400px"><br>
-                <a href="#">리버하임풀빌라 99,000원 부터 ~ </a>
-            </div>
-
-            <div class="contents2">
-                <img src="image/full4.png" width="630px" height="400px"><br>
-                <a href="#">힐앤폴 199,000원 부터 ~ </a>
-            </div>
-        </div>
-
-        <div class = "under"><a href="#">위 로</a></div>
     </div>
+    <div class="footer">
+        <a href="#">위 로</a>
+    </div>
+
+</body>
 </html>
