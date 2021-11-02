@@ -380,7 +380,7 @@ a:hover{
             <div class="service">
                 <div class="backpicture">
                     <img src="image/ge1.jpg" width="630px" height="400px"><br>
-                    <a href="#">瘤府魂 克崔祭奇记 15,000盔 何磐 ~ </a>
+                    <a href="WebContent/homepage/include/index.jsp">瘤府魂 克崔祭奇记 15,000盔 何磐 ~ </a>
                 </div>
                 <div class="contents2">
                     <img src="image/ge2.jpg" width="630px" height="400px"><br>
