@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!doctype html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="utf-8">
     <title>웹프로젝트</title>
     <link rel="stylesheet" href="css/booking.css">
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/booking.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/booking.js" charset="utf-8"></script>
+	
 </head>
 <body>
     <div id="container">
@@ -22,7 +23,7 @@
                 <img src="images/booking_picture.gif">
             </div>
             <div id="secondarticle">
-                <form action="booking2.jsp" method="post" id="bookform">
+                <form action="../../../User_Reservation" method="post" id="bookform">
                     <table cellspacing="0">
                         <colgroup>
                             <col width="25%">
@@ -35,23 +36,29 @@
                             <th>시간</th>
                         </tr>
                         <tr>
-                            <td class="borderright"><input type="date" value="" id="bookdate">입실일<input type="date" value="" id="bookdate">퇴실일
+                            <td class="borderright">
+                            <input type="date" name="inputDate"  id="bookdate">입실일
+                            <input type="date" name="outputDate"  id="bookdate">퇴실일
                             </td>
                             <td class="borderright">
                                 <ul id="themalist">
                                     <li>
+                                        
+                          
+                                        
                                                                     <!--초기-->
-                                        <p id="imglist"><img src="images/P202011017/service/41607/017696.jpg" width="300px"></p>
+                                     <p id="imglist"><img src="images/P202011017/service/41607/017696.jpg" width="300px"></p>
                                     </li>
                                     <li>
-                                        <a href="images/P202011017/room/41595/00.jpg" id="0">101 옹달샘</a>
+                                        <a class='myImage' href="images/P202011017/room/41595/00.jpg" id="0">101 옹달샘</a>
                                     </li>
                                     <li>
-                                        <a href="images/P202011017/room/41596/00.jpg" id="1">102 꿀단지</a>
+                                        <a class='myImage'  href="images/P202011017/room/41596/00.jpg" id="1">102 꿀단지</a>
                                     </li>
                                     <li>
-                                        <a href="images/P202011017/room/41597/00.jpg" id="2">201 꿀금고</a>
-                                    </li>          
+                                        <a class='myImage'  href="images/P202011017/room/41597/00.jpg" id="2">201 꿀금고</a>
+                                    </li>     
+                                         
                                 </ul>
                             </td>
                             <td>
@@ -63,19 +70,31 @@
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
+                          
                             <td>
-                                <input type="hidden" id="datetext" name="date" value="">
-                                <input type="hidden" id="thematext" name="thema" value="룸">
-                                <input type="hidden" id="timetext" name="time" value="시간">
-                                <input type="submit" class="buttontype" value="다음으로" href="booking2.jsp">
+                                
+                                <input type="hidden" id="thematext" name="thema" value="">
+                                <input type="hidden" id="timetext" name="time" value="">
+                                <input type="submit"  class="buttontype" value="다음으로" >
                             </td>
-                            <td></td>
+                            
                         </tr>
                     </table>
                 </form>
             </div>
         </section>
+        <script type="text/javascript">
+        	//$('.myImage').click(function(){
+        		//var value = $(this).attr('id');
+        		//$('#thematext').attr('value',value);
+        	//});
+        
+        
+        
+        </script>
+        
+        
+        
         <footer>
             <ul>
                 <li>주소 : 지리산</li>

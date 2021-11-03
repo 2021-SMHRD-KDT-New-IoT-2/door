@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/joinservice")
@@ -26,7 +27,10 @@ public class joinservice extends HttpServlet {
 		String customer_sex = request.getParameter("gender");
 		String customer_phone = request.getParameter("customer_phone");
 		String customer_email = request.getParameter("customer_email");
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("customer_name", customer_name);
+		session.setAttribute("customer_phone", customer_phone);
+		session.setAttribute("customer_email", customer_email);
 		
 		userDAO dao = new userDAO();
 		int cnt =  dao.join(customer_id, customer_pw, customer_name, customer_r_num, customer_sex, customer_phone, customer_email);

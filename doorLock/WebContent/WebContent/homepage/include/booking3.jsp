@@ -1,3 +1,4 @@
+<%@page import="com.VO.userVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!doctype html>
@@ -15,6 +16,22 @@
     <script type="text/javascript" src="js/booking3.js"></script>
 </head>
 <body>
+   <%
+    userVO vo = (userVO)session.getAttribute("user");  
+    String a = (String)session.getAttribute("room_num");
+    String b = (String)session.getAttribute("inTime");
+	String c = (String)session.getAttribute("in_date");
+	String d = (String)session.getAttribute("out_date");
+	String e = (String)session.getAttribute("customer_name");
+	String f = (String)session.getAttribute("customer_phone");
+	String g = (String)session.getAttribute("guestnumber");
+	String h = (String)session.getAttribute("customer_email");
+    
+    %>
+    
+   
+   
+   
     <div id="container">
    <!-- <header>
         <a href="main_display.jsp"><img id="logotype" src="images/main_logo.JPG" alt="메인로고"></a>
@@ -43,36 +60,33 @@
                     <tbody>
                         <tr>
                             <th>방(ROOM)</th>
-                            <td></td>
+                            <td><%=a %></td>
                         </tr>
                         <tr>
                             <th>예약일시(date)</th>
-                            <td></td>
+                            <td>입실&emsp;<%=c %>&emsp;&emsp;&emsp;퇴실&emsp;<%=d %></td>
                         </tr>
                         <tr>
                             <th>시간</th>
-                            <td></td>
+                            <td><%=b %></td>
                         </tr>
-                    <!--    <tr>
+                        <tr>
                             <th>인원</th>
-                            <td></td>
-                        </tr> -->
+                            <td><%=g %></td>
+                        </tr> 
                         <tr>
                             <th>룸가격</th>
-                            <td></td>
+                            <td>150,000원</td>
                         </tr>
                         <tr>
                             <th>예약금 결제</th>
                             <td id="deposittext">10,000원</td>
                         </tr>
-                        <tr>
-                            <th>결제방식</th>
-                            <td></td>
-                        </tr>
+                        
                         <tr>
                             <th>입금계좌</th>
                             <td>
-                                <select id="selecttype">
+                                <select >
                                     <option value="notselect">=== 입금 계좌를 선택해주세요 ===</option>
                                     <option value="account">반달곰 000-000-000000</option>
                                 </select>
@@ -80,19 +94,18 @@
                         </tr>
                         <tr>
                             <th>입금자명</th>
-                            <td><input type="text" class="inputtype"></td>
+                            <td><%=e %>
+                            <!--  <input type="text" class="inputtype">-->
+                            </td>
                         </tr>
-                        <tr>
-                            <th>입금예정일</th>
-                            <td><input type="text" class="inputtype"></td>
-                        </tr>
+                        
                     </tbody>
                     <tfoot>
                         <tr>
                             <td class="finaletype" colspan="2">
                                 <input type="button" onclick="firstbooking();" value="처음으로" class="buttontype"></button>
                                 <input type="button" onclick="prevbooking();" value="이전으로" class="buttontype"></button>
-                                <button type="button" onclick="location='booking4.jsp';"  class="buttontype">다음으로</button>
+                                <button type="button" onclick="location='booking4.jsp';"  class="buttontype">결제하기</button>
                                <!-- <input type="button" onclick="selectingaccount();" value="결제하기" class="buttontype"></button>-->
                             </td>
                         </tr>

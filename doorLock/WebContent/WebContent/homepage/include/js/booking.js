@@ -45,13 +45,13 @@ window.onload = function(){
             switch(k)
             {
             case "0":
-                themavalue.value = "101옹달샘";
+                themavalue.value = "101 옹달샘";
                 break;
             case "1":
-                themavalue.value = "102꿀단지";
+                themavalue.value = "102 꿀단지";
                 break;
             case "2":
-                themavalue.value = "201꿀금고";
+                themavalue.value = "201 꿀금고";
                 break;
            
             }

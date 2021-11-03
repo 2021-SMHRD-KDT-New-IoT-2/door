@@ -32,7 +32,7 @@
                     <td style="font-size:50px">예약이 완료되었습니다.</td>
                 </tr>
                 <tr>
-                    <td><input type="button" onclick="firstbookingpage();" value="확인" class="buttontype"></td>
+                    <td><input type="button" onclick= "location.href='../../../main.jsp' " value="확인" class="buttontype"></td>
                 </tr>
             </table>
         </div>

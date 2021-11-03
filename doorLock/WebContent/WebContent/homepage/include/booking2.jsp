@@ -1,3 +1,6 @@
+<%@page import="com.VO.userVO"%>
+<%@page import="com.controller.User_Reservation"%>
+<%@page import="com.controller.User_Reservation2"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!doctype html>
@@ -7,10 +10,21 @@
     <meta charset="utf-8">
     <title>웹프로젝트</title>
     <link rel="stylesheet" href="css/booking2.css">
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/booking2.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/booking2.js" charset="utf-8"></script>
 </head>
 <body>
+    <%
+    userVO vo = (userVO)session.getAttribute("user");  
+    String a = (String)session.getAttribute("room_num");
+    String b = (String)session.getAttribute("inTime");
+	String c = (String)session.getAttribute("in_date");
+	String d = (String)session.getAttribute("out_date");
+	String e = (String)session.getAttribute("customer_name");
+	String f = (String)session.getAttribute("customer_phone");
+	String h = (String)session.getAttribute("customer_email");
+    %>
+    
     <div id="container">
     <!--<header>
         <a href="main_display.jsp"><img id="logotype" src="images/main_logo.JPG" alt="메인로고"></a> -->
@@ -29,7 +43,7 @@
             <img src="images/booking2_picture.gif" style="margin-bottom:30px">
         </div>
         <div id="secondarticle">
-            <form action="#" method="post" name="info" id="info">
+            <form action="../../../User_Reservation2" method="post" name="info" id="info">
                 <table cellspacing="0">
                     <colgroup>
                         <col width="20%">
@@ -38,40 +52,47 @@
                     <tbody>
                         <tr>
                             <th>room</th>
-                            <td id="th">예약</td>
+                            <td id="th"><%=a %></td>
                         </tr>
                         <tr>
                             <th>예약일시(date)</th>
-                            <td></td>
+                            <td>입실&emsp;<%=c %>&emsp;&emsp;퇴실 &emsp;<%=d %></td>
                         </tr>
                         <tr>
                             <th>시간</th>
-                            <td></td>
+                            <td><%=b %></td>
                         </tr>
-                        <!-- <tr>
+                        <tr>
                             <th>인원</th>
                             <td>
                                <select name="guestnumber" class="selecttype" id="price">
-                                    <option id="opt0" value="0원">인원을 선택해주세요.</option>
-                                    <option id="opt1" value="24,000원">1</option>
-                                    <option id="opt2" value="44,000원">2</option>
-                                    <option id="opt3" value="60,000원">3</option>
-                                    <option id="opt4" value="72,000원">4</option>
-                                    <option id="opt5" value="80,000원">5</option>
-                                    <option id="opt6" value="84,000원">6</option>
-                                </select>-->
+                                    <option id="opt0" value="">인원을 선택해주세요.</option>
+                                    <option id="opt1" value="1">1</option>
+                                    <option id="opt2" value="2">2</option>
+                                    <option id="opt3" value="3">3</option>
+                                    <option id="opt4" value="4">4</option>
+                                    <option id="opt5" value="5">5</option>
+                                    <option id="opt6" value="6">6</option>
+                                    <option id="opt7" value="7">7</option>
+                                    <option id="opt8" value="8">8</option>
+                                    <option id="opt9" value="9">9</option>
+                                    <option id="opt10" value="10">10</option>
+                                    
+                                </select>
                             </td>
                         </tr>
                         <tr>
                             <th>예약자명</th>
-                            <td>
-                                <input type="text" id="user_name" class="inputtype" autocomplete="off" value="">
+                            <td><%=e %>
+                                <!--  <input type="text" id="user_name" class="inputtype" autocomplete="off" value="<%=d %>">-->
                             </td>
                         </tr>
                         <tr>
                             <th>연락처</th>
-                            <td>
-                                <select name="guestphonenumber1" class="selecttype">
+                            <td><%=f %>
+                               
+                               
+                               <!-- <select name="guestphonenumber1" class="selecttype">
                                     <option value="010">010</option>
                                     <option value="011">011</option>
                                     <option value="016">016</option>
@@ -80,13 +101,13 @@
                                     <option value="019">019</option>
                                 </select>
                                 <input type="text" name="guestphonenumber2" autocomplete="off" maxlength="4" class="inputtype" id="user_p1" value="">
-                                <input type="text" name="guestphonenumber3" autocomplete="off" maxlength="4" class="inputtype" id="user_p2" value="">
+                                <input type="text" name="guestphonenumber3" autocomplete="off" maxlength="4" class="inputtype" id="user_p2" value="">-->
                             </td>
                         </tr>
                         <tr>
                             <th>이메일</th>
-                            <td>
-                                <label>
+                            <td><%=h %>
+                               <!--   <label>
                                     <input type="email" class="inputtype" autocomplete="off" id="user_prevemail" value="">
                                     @
                                     <select name="emailselect" class="selecttype" id="user_nextemail">
@@ -97,17 +118,14 @@
                                         <option value="hanmail.net">hanmail.net</option>
                                         <option value="hotmail.com">hotmail.com</option>
                                     </select>
-                                </label>
+                                </label>-->
                             </td>
                         </tr>
                         <tr>
                             <th>예약금</th>
                             <td>10,000원</td>
                         </tr>
-                        <tr>
-                            <th>참가요금</th>
-                            <td id="txt" style="font-weight:bold" value=""></td>
-                        </tr>
+                        
                         <tr>
                             <th>결제방식</th>
                             <td>
@@ -174,12 +192,12 @@
                     </tfoot>
                 </table>    
                 
-            </form>
+            
         </div>
         <input type="button" onclick="firstbooking();" class="buttontype" value="처음으로" href="booking.jsp">
         <input type="button" onclick="prevbookingpage();" class="buttontype" value="이전으로" href="booking.jsp">
-        <button type="button" onclick="location='booking3.jsp';"  class="buttontype">다음으로</button>
-
+        <input type="submit"  class="buttontype" value = "다음으로">
+ </form>
         <!--<input type="submit" class="buttontype" value="다음으로" href="booking3.jsp">-->
     </section>
     <footer>

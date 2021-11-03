@@ -284,7 +284,7 @@ a:hover{
 			    	 <%}%>
 
                      <%if(!(vo==null)){%>
-                        <li><a href="#">Reservation</a></li>
+                        <li><a href="WebContent/homepage/include/booking.jsp">Reservation</a></li>
                         <li><a href="UserReservation.jsp">reservation confirm</a></li>
                         <li><a href="#">My information</a></li>
                         
