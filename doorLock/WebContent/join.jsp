@@ -144,7 +144,8 @@ span {
     
     function data(){
     	 var name = document.getElementsByName("customer_name");
-    	 alert(name[0].value+"님 회원가입을 축하합니다."); 
+    	 alert(name[0].value+"님 회원가입을 축하합니다.");
+    		location.href="main.jsp";
     	 
     }
     
