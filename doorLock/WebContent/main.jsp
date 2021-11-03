@@ -279,14 +279,14 @@ a:hover{
 
                 <%if(vo==null){%>
                 <li><a href="#">HOME</a></li>
-                <li><a href="join.jsp">SignIn/Register</a></li>
-                <li><a href="hostJoin.jsp">Manager SignIn</a></li>
+                <li><a href="join.jsp">회원가입/로그인</a></li>
+                <li><a href="hostJoin.jsp">업체등록관리</a></li>
 			    	 <%}%>
 
                      <%if(!(vo==null)){%>
-                        <li><a href="WebContent/homepage/include/booking.jsp">Reservation</a></li>
-                        <li><a href="UserReservation.jsp">reservation confirm</a></li>
-                        <li><a href="#">My information</a></li>
+                        <li><a href="WebContent/homepage/include/booking.jsp">예약하기</a></li>
+                        <li><a href="UserReservation.jsp">예약확인</a></li>
+                        <li><a href="#">내정보</a></li>
                         
                          <%}%>
             </ul>
