@@ -134,16 +134,27 @@ span {
                 <input type="radio" name="gender" value="1">male
                 <input type="radio" name="gender" value="0">female <br>
                 <input type="checkbox" class="checkbox"><span>약관 확인</span>
-                <button class="submit" onclick="btn()">가입하기</button>
+                <button class="submit" onclick="data()">가입하기</button>
                 
             </form>
         </div>
     </div>
     <script>
-     function btn(){ alert('회원가입을 축하합니다');
-     document.location.href = "main.jsp";
-     } 
+   
+    
+    function data(){
+    	 var name = document.getElementsByName("customer_name");
+    	 alert(name[0].value+"님 회원가입을 축하합니다."); 
+    	 
+    }
+    
+
+    	
+    		   
+   
      
+    
+    
     
     		
     	var x = document.getElementById("login");
