@@ -284,6 +284,7 @@ a:hover{
 			    	 <%}%>
 
                      <%if(!(vo==null)){%>
+                     <li><a href="#">HOME</a></li>
                         <li><a href="WebContent/homepage/include/booking.jsp">예약하기</a></li>
                         <li><a href="UserReservation.jsp">예약확인</a></li>
                         <li><a href="#">내정보</a></li>
