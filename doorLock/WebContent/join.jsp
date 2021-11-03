@@ -121,7 +121,7 @@ span {
                     <input type="text" name = "customer_id" class="input-field" placeholder="User id" required>
                     <input type="password"  name = "customer_pw" class="input-field" placeholder="Enter Password" required>
                     <input type="checkbox" class="checkbox"><span>Remember Password</span>
-                    <button class="submit" onclick="location.href='main.jsp'">로그인</button>
+                    <button class="submit" onclick="">로그인</button>
                 </form>
             <form id="register" action="joinservice" class="input-group">
                 <input type="text" name = "customer_id"class="input-field" placeholder="User id" required>
@@ -134,13 +134,17 @@ span {
                 <input type="radio" name="gender" value="1">male
                 <input type="radio" name="gender" value="0">female <br>
                 <input type="checkbox" class="checkbox"><span>약관 확인</span>
-                <button class="submit" onclick="location.href='main.jsp'">가입하기</button>
+                <button class="submit" onclick="btn()">가입하기</button>
                 
             </form>
         </div>
     </div>
     <script>
-        
+     function btn(){ alert('회원가입을 축하합니다');
+     document.location.href = "main.jsp";
+     } 
+     
+    
     		
     	var x = document.getElementById("login");
         var y = document.getElementById("register");
