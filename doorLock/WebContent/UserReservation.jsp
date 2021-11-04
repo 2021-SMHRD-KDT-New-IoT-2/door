@@ -12,7 +12,8 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         table, th, td {
             border: 1px solid black;
@@ -278,8 +279,8 @@ a {
 					<th>체크인 일자</th>
 					<th>체크아웃 일자</th>
 					<th>도어락 비밀번호</th>
-					<th>예약 상태</th>
 					<th>체크인 여부</th>
+					<th>예약 상태</th>
 				</tr>
 			</thead>
 			<tbody align="center">
@@ -296,7 +297,16 @@ a {
 					<td><label for="email">비밀번호 설정:</label> <input min="4" max="8"
 						value="0" type="number" id="doorlockPW">
 						<button type="button" class="btn btn-default">저장</button></td>
-					<td><%=vo.getIs_checkin() %></td>
+					<td><% 
+							if (vo.getIs_checkin()) {
+						%> 입실완료 <%
+							} else {
+						%> -<%
+							}
+						%>
+					
+					
+					</td>
 					<td>
 						<%
 							if (vo.getStatus().equals("1")) {
@@ -318,7 +328,7 @@ a {
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
     <script>
-    /* EXPANDER MENU */
+     /* EXPANDER MENU */
     const showMenu = (toggleId, navbarId, bodyId) => {
         const toggle = document.getElementById(toggleId),
         navbar = document.getElementById(navbarId),
@@ -356,7 +366,7 @@ a {
             rotate.classList.toggle('rotate')
         });
     }
-
+    </script>
 	<script type="text/javascript">
 
 	$(function(){ 
