@@ -47,7 +47,7 @@ public class DoorlockDAO {
 		DoorLockVO vo = null;
 		conn();
 		try {
-			String sql = "select reservation_key from reservations where reservation_num = '2110260001'";
+			String sql = "select reservation_key from reservations where reservation_num = '2111040009'";
 			psmt = conn.prepareStatement(sql);
 			//psmt.setString(1, reservation_num);
 			rs = psmt.executeQuery();
@@ -96,11 +96,11 @@ public class DoorlockDAO {
 	public DoorLockVO update(String doorlockPW, String reservation_num) {
 		DoorLockVO vo = null;
 		conn();
-		String sql1 = "update reservations set reservation_key = ?  where reservation_num = ?";
+		String sql1 = "update reservations set reservation_key = ?  where reservation_num = '2111040009'";
 		try {
 			psmt = conn.prepareStatement(sql1);
 			psmt.setString(1, doorlockPW);
-			psmt.setString(2, reservation_num);
+			//psmt.setString(2, reservation_num);
 			
 			psmt.execute();
 		} catch (SQLException e) {

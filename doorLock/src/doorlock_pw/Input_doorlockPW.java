@@ -31,7 +31,7 @@ public class Input_doorlockPW extends HttpServlet {
 		DoorLockVO vo = dao.update(doorlockPW,reservation_num);
 				
 		if(is_checkin.equals("true")) { //체크인 상태라면 사용자가 지정한 비밀번호 전송
-			vo = dao.getCustomerPW("2110260001");
+			vo = dao.getCustomerPW("2111040009");
 			System.out.println("is_checkin=1"+vo.getDoorlockPW());
 		}else {//체크인 상태가 아니라면 유저가 지정한 비밀번호를 전송
 			vo = dao.getRoomPW("A1");			
