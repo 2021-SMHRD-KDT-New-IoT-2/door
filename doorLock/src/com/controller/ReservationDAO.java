@@ -82,30 +82,36 @@ public class ReservationDAO {
 	}
 	
 	
-public ArrayList<ReservationVO> Reservation_info(String customer_id) {
+	public ArrayList<ReservationVO> Reservation_info() {
 		
 		al = new ArrayList<ReservationVO>();
 		
 		try {
 			connection();
 
-			String sql = "select * from reservations where customer_id = ?";
+			String sql = "select * from reservations where customer_id = 'a'";
 
-			
+			// 3.sql 실행 객체(PrepapredStatement) 객체 생성
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, customer_id);
-			
+
+			// 4. 바인드 변수 채워주기
+
+			// 5. sql문 실행 후 결과 처리
 			rs = psmt.executeQuery();
-			
+			// rs.next() -> true / false
 			while (rs.next()) {
 
 				String reservation_num = rs.getString(1);
 				String room_num = rs.getString(2);
 				String hotel_uid = rs.getString(3);
-				String customer_id1= rs.getString(4);
-				String checkin_date = rs.getString(5);
-				String checkout_date = rs.getString(6);
-				String is_checkin = rs.getString(7);
+				String customer_id = rs.getString(4);
+				String temp = rs.getString(5);
+				String[] checkin_date_day = temp.split(" ");
+				String checkin_date = checkin_date_day[0];
+				String temp2 = rs.getString(6);
+				String[] checkout_date_day = temp2.split(" ");
+				String checkout_date = checkout_date_day[0];
+				boolean is_checkin = rs.getBoolean(7);
 				String reservation_key = rs.getString(8);
 				String num_of_people = rs.getString(9);
 				String status = rs.getString(10);
@@ -122,5 +128,51 @@ public ArrayList<ReservationVO> Reservation_info(String customer_id) {
 		return al;
 	}
 	
+	public ArrayList<ReservationVO> Reservation_info(String hotel_uid) {
+		
+		al = new ArrayList<ReservationVO>();
+		
+		try {
+			connection();
+
+			String sql = "SELECT res.reservation_num,res.room_num, cus.customer_name, cus.customer_phone, res.checkin_date, res.checkout_date, res.status,cus.customer_sex,res.num_of_people, res.is_checkin FROM reservations res, customers cus where res.customer_id = cus.customer_id and res.hotel_uid='A1' ORDER BY res.checkin_date desc";
+			// 3.sql 실행 객체(PrepapredStatement) 객체 생성
+			psmt = conn.prepareStatement(sql);
+			//System.out.println(hotel_uid);
+			// 4. 바인드 변수 채워주기
+			//psmt.setString(1, hotel_uid);
+
+			// 5. sql문 실행 후 결과 처리
+			rs = psmt.executeQuery();
+			
+			// rs.next() -> true / false
+			while (rs.next()) {
+				String reservation_num = rs.getString(1);
+				String room_num = rs.getString(2);
+				String customer_name = rs.getString(3);
+				String customer_phone = rs.getString(4);
+				String temp = rs.getString(5);
+				String[] checkin_date_day = temp.split(" ");
+				String checkin_date = checkin_date_day[0];
+				String temp2 = rs.getString(6);
+				String[] checkout_date_day = temp2.split(" ");
+				String checkout_date = checkout_date_day[0];
+				String status = rs.getString(7);
+				boolean customer_sex = rs.getBoolean(8);
+				String num_of_people = rs.getString(9);
+				boolean is_checkin = rs.getBoolean(10);
+				
+				System.out.print("!");
+				al.add(new ReservationVO(reservation_num, room_num, customer_name, customer_phone, checkin_date, checkout_date, status, customer_sex, num_of_people,is_checkin) );
+			}
+		} catch (Exception e) {
+			System.out.println("조회실패!");
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return al;
+	}
 	
 }

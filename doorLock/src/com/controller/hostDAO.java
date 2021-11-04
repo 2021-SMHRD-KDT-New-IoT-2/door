@@ -1,6 +1,5 @@
 package com.controller;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,10 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.VO.hostVO;
-
-
-
-
 
 public class hostDAO {
 	
@@ -77,7 +72,7 @@ public int join(String host_id, String host_pw,
 			System.out.println("가입 실패1");
 			e.printStackTrace();
 		}finally {
-			close();
+			close(); 
 		}
 		return cnt;	
 	}	

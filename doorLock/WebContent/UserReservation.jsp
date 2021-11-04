@@ -1,9 +1,11 @@
-<%@page import="com.VO.userVO"%>
-<%@page import="com.VO.ReservationVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.controller.ReservationDAO"%>
+<%@page import="com.VO.ReservationVO"%>
+<%@page import="com.controller.hostDAO"%>
+<%@page import="doorlock_pw.DoorLockVO"%>
+<%@page import="doorlock_pw.DoorlockDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -228,12 +230,10 @@ a {
 </head>
 
 <body id="body-pd">
-    <%
-		ReservationDAO dao= new ReservationDAO();
+	<%
+		ReservationDAO dao = new ReservationDAO();
 		ArrayList<ReservationVO> al = new ArrayList<ReservationVO>();
-		userVO vo1 = (userVO)session.getAttribute("user");
-		al = dao.Reservation_info(vo1.getCustomer_id());
-		ReservationVO vo2 = new ReservationVO();
+		al = dao.Reservation_info();
 	%>
     
     <div class="l-navbar" id="navbar">
@@ -268,43 +268,51 @@ a {
                     <div class="icon_img">
                         <img src="image/check.png" width="150px" height="100px">
                     </div>
-                    <h2>펜션 예약 확인</h2>
-                </caption>
-                <thead>
-                    <tr>
-                        <th>예약 번호</th>
-                        <th>숙소 이름</th>
-                        <th>방번호</th>
-						<th>예약 인원</th>
-                        <th>체크인 일자</th>
-                        <th>체크아웃 일자</th>
-                        <th>도어락 비밀번호</th>
-                        <th>예약 상태</th>
-                    </tr>
-                </thead>
-                <tbody align="center">
-                    <tr>
-                       <% for(ReservationVO vo:al){ %>
-								<tr>
-									<td><%=vo.getReservation_num()%></td>
-									<td><%=vo.getHotel_uid()%></td>
-									<td><%=vo.getRoom_num()%></td>
-									<td><%=vo.getNum_of_people()%></td>
-									<td><%=vo.getCheckin_date()%></td>
-									<td><%=vo.getCheckout_date()%></td>
-									<td><label for="email">비밀번호 설정:</label> 
-									<input min="4" max="8" value="0" type="number" id="doorlockPW">
-									<button id="change_pw" type="button" class= "btn btn-default">전송</button></td>
-									<td><%=vo.getStatus()%></td>
-									
-								</tr>	
-							<%} %>
-    
-                    </tr>
-                    
-    
-                </tbody>
-            </table>
+                    <h2>예약 확인</h2>
+			</caption>
+			<thead>
+				<tr>
+					<th>예약 번호</th>
+					<th>숙소 이름</th>
+					<th>예약 인원</th>
+					<th>체크인 일자</th>
+					<th>체크아웃 일자</th>
+					<th>도어락 비밀번호</th>
+					<th>예약 상태</th>
+					<th>체크인 여부</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+
+				<%
+					for (ReservationVO vo : al) {
+				%>
+				<tr>
+					<td><%=vo.getReservation_num()%></td>
+					<td><%=vo.getHotel_uid()%></td>
+					<td><%=vo.getNum_of_people()%></td>
+					<td><%=vo.getCheckin_date()%> 15:00</td>
+					<td><%=vo.getCheckout_date()%> 14:00</td>
+					<td><label for="email">비밀번호 설정:</label> <input min="4" max="8"
+						value="0" type="number" id="doorlockPW">
+						<button type="button" class="btn btn-default">저장</button></td>
+					<td><%=vo.getIs_checkin() %></td>
+					<td>
+						<%
+							if (vo.getStatus().equals("1")) {
+						%> 확약 <%
+							} else {
+						%> 결제 확인 중 <%
+							}
+						%>
+					</td>
+				</tr>
+				<%
+					}
+				%>
+
+			</tbody>
+		</table>
     </div>
     <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
@@ -351,36 +359,42 @@ a {
 
 	<script type="text/javascript">
 
-
-$(function(){ 
-	$.ajax({
-		url : "Get_info",
-		type : "get",
-		dataType : "json",
-		success : function(data){
-			$('#result').html("현재 도어락 비밀번호 : " + data.doorlockPW);
-		},
-		error : function(){
-			alert('error');
-		}
-	});
-});
-
-	$("#change_pw").on('click',function(){
-		var doorlockPW = $('#doorlockPW').val();
+	$(function(){ 
 		$.ajax({
-			url : "Input_doorlockPW",
+			url : "Get_info",
 			type : "get",
-			data : {"doorlockPW": doorlockPW},
 			dataType : "json",
 			success : function(data){
-				$('#result').html("현재 도어락 비밀번호 : " + data.doorlockPW);
+				$('#result').html("현재 LED 상태 : " + data.mysensor);
 			},
 			error : function(){
-				 alert('error');
+				alert('error');
 			}
 		});
 	});
+	
+	
+		$(".btn").on('click',
+				function() {
+					var doorlockPW = $(this).parents().children('input').val();
+					console.log(doorlockPW+ " : "+ $(this).parents().parents().children('td').html())
+					$.ajax({
+						url : "Input_doorlockPW",
+						type : "get",
+						data : {
+							"reservation_num" : $(this).parents().parents().children('td').html(),
+							"doorlockPW" : doorlockPW,
+							"is_checkin" : $(this).parents().next().html()
+						},
+						dataType : "json",
+						success : function(data) {
+							$('#result').html("현재 도어락 비밀번호 : " + data.doorlockPW);
+						},
+						error : function() {
+							alert('error');
+						}
+					});
+				});
 </script>
   
 </body>

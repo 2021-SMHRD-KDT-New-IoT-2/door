@@ -1,3 +1,6 @@
+<%@page import="com.VO.ReservationVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.controller.ReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -207,6 +210,12 @@ a {
  }       
         </style>
 <body>
+<%
+		ReservationDAO dao= new ReservationDAO();
+		ArrayList<ReservationVO> al = new ArrayList<ReservationVO>();
+		al = dao.Reservation_info("A1");
+		System.out.print(al.size());
+%>
 	 <div class="l-navbar" id="navbar">
         <nav class="nav">
             <div>
@@ -256,97 +265,46 @@ a {
         </caption>
         <thead>
             <tr>
-                <th>번호</th>
-                <th>숙소 이름</th>
-                <th>관리자 이름</th>
-                <th>관리자 ID</th>
+                <th>예약번호</th>
+                <th>방 번호</th>
+                <th>예약자 명</th>
                 <th>연락처</th>
-                <th>신청 날짜</th>
-                <th>URL주소</th>
-                <th>비고</th>
+                <th>체크인 날짜</th>
+                <th>체크아웃 날짜</th>
+                <th>예약 상태</th>
+                <th>성별/인원</th>
+                <th>체크인여부</th>
             </tr>
         </thead>
         <tbody align="center">
+        <% for(ReservationVO vo:al){ %>
             <tr>
-                <td>001</td>
-                <td>산토리니 펜션</td>
-                <td>곽두팔</td>
-                <td>san123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="http://127.0.0.1:5500/web%20%ED%8C%8C%EC%9D%BC%EB%AA%A8%EC%9D%8C/%ED%8E%9C%EC%85%98%EB%A9%94%EC%9D%B8.html">SantoriniPension.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
+                <td><%=vo.getReservation_num()%></td>
+                <td><%=vo.getRoom_num()%></td>
+                <td><%=vo.getCustomer_name()%></td>
+                <td><%=vo.getCustomer_phone()%></td>
+                <td><%=vo.getCheckin_date()%> 15:00</td>
+                <td><%=vo.getCheckout_date()%> 14:00</td>
+                <td><% if(vo.getStatus().equals("1")){
+                	%> 확약 <%
+                }else{%>
+                	결제 확인 중
+                <%}%>
+                </td>
+                <td><% if(vo.getCustomer_sex()){%>
+                	남/
+                <% }else{%>
+					여 /
+                <%} %> <%=vo.getNum_of_people()%>
+                </td>
+                <td><%if(vo.getIs_checkin()){%>
+                		Y
+                <%}else{%>
+                		N
+                <%} %>
+                </td>
             </tr>
-            <tr>
-                <td>002</td>
-                <td>아쿠아밸리</td>
-                <td>강예진</td>
-                <td>aqua123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="#">Aquavalley.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
-            </tr>
-            <tr>
-                <td>003</td>
-                <td>하노이 호텔</td>
-                <td>서대희</td>
-                <td>hanoi123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="#">HanoiHotel.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
-            </tr>
-            <tr>
-                <td>004</td>
-                <td>하늘 게스트하우스</td>
-                <td>한승진</td>
-                <td>sky123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="#">SkyGuestHouse.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
-            </tr>
-            <tr>
-                <td>005</td>
-                <td>광주스테이</td>
-                <td>정진후</td>
-                <td>stay123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="#">GwangjuStay.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
-            </tr>
-            <tr>
-                <td>006</td>
-                <td>쉼터 게스트하우스</td>
-                <td>현수지</td>
-                <td>rest123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="#">RestGuestHouse.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
-            </tr>
-            <tr>
-                <td>007</td>
-                <td>쉐어 게스트하우스</td>
-                <td>강형구</td>
-                <td>share123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="#">ShareGuestHouse.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
-            </tr>
-            <tr>
-                <td>008</td>
-                <td>리버하임풀빌라</td>
-                <td>이솔업</td>
-                <td>rever123</td>
-                <td>010-1234-7890</td>
-                <td>2021-10-28</td>
-                <td><a = href="#">Reverpoolvilla.com</a></td>
-                <td><button> 등록 </button> / <button> 취소 </button>  </td>
-            </tr>
+            <%} %>
         </tbody>
     </table>
     </div>
